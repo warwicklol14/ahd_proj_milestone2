@@ -28,9 +28,9 @@ module data_memory(
     output reg [31:0] data
     );
     
-    reg [31:0] data_mem [0:2047];
+    reg [31:0] data_mem [0:1023];
     
-    wire [31:0] addr = (address[27:0] >> 2);
+    wire [31:0] addr = (address[27:2]);
      
     always@(posedge clk)
     begin

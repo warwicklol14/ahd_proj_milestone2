@@ -26,13 +26,13 @@ module ins_memory(
     output reg [31:0] instruction
     );
     
-    reg [31:0] instruction_rom [0:1023];
+    reg [31:0] instruction_rom [0:511];
         
     initial begin
         $readmemh("main.mem", instruction_rom);
     end
     
-    wire [31:0] addr_word = (address[23:0] >> 2);
+    wire [31:0] addr_word = address[23:2];
     
     always@(posedge clk) begin
         instruction <= instruction_rom[addr_word];
